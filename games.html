@@ -48,25 +48,27 @@
             margin: auto;
         }
         .fjordr-player {
-            position: relative;
-            width: 100%;
-            max-width: 100%;
-            height: 650px; /* Fixed height to accommodate ad and game content */
-            margin-top: 20px;
-            border: 2px solid #3949ab;
-            border-radius: 8px;
-            overflow: hidden;
-            background-color: #000;
-            display: flex;
-            flex-direction: column;
-        }
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+    height: 650px; /* Fixed height to accommodate ad and game content */
+    margin-top: 20px;
+    border: 2px solid #3949ab;
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: #000;
+    display: flex;
+    flex-direction: column;
+}
 
-        .fjordr-player iframe {
-            flex: 1;
-            border: none;
-            transform: scale(0.95); /* Scale down slightly to fit better */
-            transform-origin: top left;
-        }
+.fjordr-player iframe {
+    flex: 1;
+    width: 100%;
+    height: calc(100% - 90px); /* Subtract the height of the ad banner */
+    border: none;
+    object-fit: cover; /* Ensures the game content fills the iframe */
+}
+
 
         .fjordr-loading {
             position: absolute;
