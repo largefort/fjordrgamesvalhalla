@@ -21,20 +21,21 @@
         header {
             background-color: #3f51b5;
             color: white;
-            padding: 15px;
+            padding: 20px;
             text-align: center;
         }
         nav {
             background-color: #3949ab;
-            padding: 10px;
+            padding: 15px;
             display: flex;
             justify-content: center;
+            gap: 20px;
         }
         nav a {
             color: white;
             text-decoration: none;
+            font-weight: bold;
             padding: 10px 20px;
-            margin: 0 5px;
             border-radius: 4px;
             transition: background-color 0.3s;
         }
@@ -111,16 +112,6 @@
         .fjordr-controls button:hover {
             background-color: #5c6bc0;
         }
-        .ad-banner {
-            width: 100%;
-            height: 50px; /* Adjust the height according to your ad */
-            background-color: #ccc; /* Placeholder background, replace with ad code */
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 14px;
-            color: #333;
-        }
     </style>
 </head>
 <body>
@@ -130,9 +121,11 @@
 </header>
 
 <nav>
-    <a href="index.html" class="mui-button mui-button--raised mui-button--primary">Home</a>
-    <a href="games.html" class="mui-button mui-button--raised mui-button--primary">Our Games</a>
-    <a href="about.html" class="mui-button mui-button--raised mui-button--primary">About</a>
+    <a href="index.html">Home</a>
+    <a href="games.html">Our Games</a>
+    <a href="about.html">About</a>
+    <a href="privacy.html">Privacy Policy</a>
+    <a href="contact.html">Contact</a>
 </nav>
 
 <main>
@@ -142,10 +135,17 @@
     <!-- Geo Tycoon Fjörðr Player -->
     <h3>Geo Tycoon</h3>
     <div class="fjordr-player" id="fjordrPlayer1">
-        <div class="ad-banner">
-            <!-- Replace with your ad network code -->
-            Advertisement
-        </div>
+        <!-- Fjörðr Player Ad Banner -->
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7136613030546059"
+            crossorigin="anonymous"></script>
+        <ins class="adsbygoogle"
+            style="display:inline-block;width:728px;height:90px"
+            data-ad-client="ca-pub-7136613030546059"
+            data-ad-slot="3924934264"></ins>
+        <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+
         <div class="fjordr-loading" id="loadingScreen1">
             <div class="spinner"></div>
             <div>Loading the game...</div>
@@ -161,15 +161,22 @@
     <!-- Medieval Civilizations Fjörðr Player -->
     <h3>Medieval Civilizations</h3>
     <div class="fjordr-player" id="fjordrPlayer2">
-        <div class="ad-banner">
-            <!-- Replace with your ad network code -->
-            Advertisement
-        </div>
+        <!-- Fjörðr Player Ad Banner -->
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7136613030546059"
+            crossorigin="anonymous"></script>
+        <ins class="adsbygoogle"
+            style="display:inline-block;width:728px;height:90px"
+            data-ad-client="ca-pub-7136613030546059"
+            data-ad-slot="3924934264"></ins>
+        <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+
         <div class="fjordr-loading" id="loadingScreen2">
             <div class="spinner"></div>
             <div>Loading the game...</div>
         </div>
-        <iframe id="gameIframe2" src="https://largefort.github.io/medievalcivilizations" title="Medieval Civilizations"></iframe>
+        <iframe id="gameIframe2" src="https://medievalcivilizations.online" title="Medieval Civilizations"></iframe>
         <div class="fjordr-controls">
             <button onclick="reloadGame(2)">Reload</button>
             <button onclick="enterFullscreen(2)">Fullscreen</button>
@@ -221,5 +228,10 @@
     }
 </script>
 
+<footer>
+    <p>&copy; 2024 Fjörðr Games Valhalla | <a href="privacy.html">Privacy Policy</a> | <a href="contact.html">Contact Us</a></p>
+</footer>
+
 </body>
 </html>
+
