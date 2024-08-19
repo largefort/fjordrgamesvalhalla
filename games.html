@@ -4,10 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Our Games - Fjörðr Games Valhalla</title>
+    <!-- Google AdSense Script -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7136613030546059"
+        crossorigin="anonymous"></script>
     <!-- Material-UI CDN -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://unpkg.com/@mui/material@5.0.0-alpha.37/dist/material-ui.min.css">
-    <script src="https://unpkg.com/@mui/material@5.0.0-alpha.37/dist/material-ui.min.js"></script>
     <style>
         body {
             font-family: 'Roboto', sans-serif;
@@ -48,7 +50,7 @@
             position: relative;
             width: 100%;
             max-width: 100%;
-            height: 600px;
+            height: 650px; /* Increased height to accommodate ad */
             margin-top: 20px;
             border: 2px solid #3949ab;
             border-radius: 8px;
@@ -109,6 +111,16 @@
         .fjordr-controls button:hover {
             background-color: #5c6bc0;
         }
+        .ad-banner {
+            width: 100%;
+            height: 50px; /* Adjust the height according to your ad */
+            background-color: #ccc; /* Placeholder background, replace with ad code */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            color: #333;
+        }
     </style>
 </head>
 <body>
@@ -127,50 +139,71 @@
     <h2>Our Games</h2>
     <p>Enjoy playing our browser-based games directly from this page.</p>
 
+    <!-- Geo Tycoon Fjörðr Player -->
     <h3>Geo Tycoon</h3>
-    <div class="fjordr-player" id="fjordrPlayer">
-        <div class="fjordr-loading" id="loadingScreen">
-            <div class="spinner"></div>
-            <div>Loading Geo Tycoon...</div>
+    <div class="fjordr-player" id="fjordrPlayer1">
+        <div class="ad-banner">
+            <!-- Replace with your ad network code -->
+            Advertisement
         </div>
-        <iframe id="gameIframe" src="https://geotycoon.online" title="Geo Tycoon"></iframe>
+        <div class="fjordr-loading" id="loadingScreen1">
+            <div class="spinner"></div>
+            <div>Loading the game...</div>
+        </div>
+        <iframe id="gameIframe1" src="https://geotycoon.online" title="Geo Tycoon"></iframe>
         <div class="fjordr-controls">
-            <button onclick="reloadGame()">Reload</button>
-            <button onclick="enterFullscreen()">Fullscreen</button>
+            <button onclick="reloadGame(1)">Reload</button>
+            <button onclick="enterFullscreen(1)">Fullscreen</button>
             <button onclick="goBack()">Back</button>
         </div>
     </div>
-</main>
-     <h3>Medieval Civilizations</h3>
-    <div class="fjordr-player" id="fjordrPlayer">
-        <div class="fjordr-loading" id="loadingScreen">
-            <div class="spinner"></div>
-            <div>Loading MedievalCivilizations...</div>
+
+    <!-- Medieval Civilizations Fjörðr Player -->
+    <h3>Medieval Civilizations</h3>
+    <div class="fjordr-player" id="fjordrPlayer2">
+        <div class="ad-banner">
+            <!-- Replace with your ad network code -->
+            Advertisement
         </div>
-        <iframe id="gameIframe" src="https://medievalciviliztions.online" title="Medieval Civilizations"></iframe>
+        <div class="fjordr-loading" id="loadingScreen2">
+            <div class="spinner"></div>
+            <div>Loading the game...</div>
+        </div>
+        <iframe id="gameIframe2" src="https://largefort.github.io/medievalcivilizations" title="Medieval Civilizations"></iframe>
         <div class="fjordr-controls">
-            <button onclick="reloadGame()">Reload</button>
-            <button onclick="enterFullscreen()">Fullscreen</button>
+            <button onclick="reloadGame(2)">Reload</button>
+            <button onclick="enterFullscreen(2)">Fullscreen</button>
             <button onclick="goBack()">Back</button>
         </div>
     </div>
 </main>
 
 <script>
-    document.getElementById('gameIframe').onload = function() {
-        document.getElementById('loadingScreen').style.display = 'none';
-        document.getElementById('gameIframe').style.display = 'block';
+    // Function to handle game loading
+    function handleGameLoad(playerId) {
+        document.getElementById('loadingScreen' + playerId).style.display = 'none';
+        document.getElementById('gameIframe' + playerId).style.display = 'block';
+    }
+
+    // Add onload events for both iframes
+    document.getElementById('gameIframe1').onload = function() {
+        handleGameLoad(1);
+    };
+    document.getElementById('gameIframe2').onload = function() {
+        handleGameLoad(2);
     };
 
-    function reloadGame() {
-        const iframe = document.getElementById('gameIframe');
+    // Function to reload the game
+    function reloadGame(playerId) {
+        const iframe = document.getElementById('gameIframe' + playerId);
         iframe.style.display = 'none';
-        document.getElementById('loadingScreen').style.display = 'flex';
+        document.getElementById('loadingScreen' + playerId).style.display = 'flex';
         iframe.src = iframe.src;
     }
 
-    function enterFullscreen() {
-        const player = document.getElementById('fjordrPlayer');
+    // Function to enter fullscreen mode
+    function enterFullscreen(playerId) {
+        const player = document.getElementById('fjordrPlayer' + playerId);
         if (player.requestFullscreen) {
             player.requestFullscreen();
         } else if (player.mozRequestFullScreen) { /* Firefox */
@@ -182,6 +215,7 @@
         }
     }
 
+    // Function to go back to the previous page
     function goBack() {
         window.history.back();
     }
