@@ -1,14 +1,15 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About - Fjörðr Games Valhalla</title>
+    <!-- Google AdSense Script -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7136613030546059"
+            crossorigin="anonymous"></script>
     <!-- Material-UI CDN -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://unpkg.com/@mui/material@5.0.0-alpha.37/dist/material-ui.min.css">
-    <script src="https://unpkg.com/@mui/material@5.0.0-alpha.37/dist/material-ui.min.js"></script>
     <style>
         body {
             font-family: 'Roboto', sans-serif;
@@ -20,20 +21,21 @@
         header {
             background-color: #3f51b5;
             color: white;
-            padding: 15px;
+            padding: 20px;
             text-align: center;
         }
         nav {
             background-color: #3949ab;
-            padding: 10px;
+            padding: 15px;
             display: flex;
             justify-content: center;
+            gap: 20px;
         }
         nav a {
             color: white;
             text-decoration: none;
+            font-weight: bold;
             padding: 10px 20px;
-            margin: 0 5px;
             border-radius: 4px;
             transition: background-color 0.3s;
         }
@@ -45,24 +47,42 @@
             max-width: 960px;
             margin: auto;
         }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+        }
+        footer a {
+            color: white;
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
 
 <header>
     <h1>Fjörðr Games Valhalla</h1>
+    <p>About Us</p>
 </header>
 
 <nav>
-    <a href="index.html" class="mui-button mui-button--raised mui-button--primary">Home</a>
-    <a href="games.html" class="mui-button mui-button--raised mui-button--primary">Our Games</a>
-    <a href="about.html" class="mui-button mui-button--raised mui-button--primary">About</a>
+    <a href="index.html">Home</a>
+    <a href="games.html">Our Games</a>
+    <a href="about.html">About</a>
+    <a href="privacy.html">Privacy Policy</a>
+    <a href="contact.html">Contact</a>
 </nav>
 
 <main>
-    <h2>About Us</h2>
+    <h2>About Fjörðr Games Valhalla</h2>
     <p>Fjörðr Games Valhalla is a game studio managed by a solo developer dedicated to creating engaging and unique browser-based games. Our mission is to provide gamers with high-quality experiences that blend creativity with Norse mythology.</p>
 </main>
+
+<footer>
+    <p>&copy; 2024 Fjörðr Games Valhalla | <a href="privacy.html">Privacy Policy</a> | <a href="contact.html">Contact Us</a></p>
+</footer>
 
 </body>
 </html>
