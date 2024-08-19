@@ -44,11 +44,40 @@
             max-width: 960px;
             margin: auto;
         }
-        .game-iframe {
+        .fjordr-player {
+            position: relative;
             width: 100%;
+            max-width: 100%;
             height: 600px;
-            border: none;
             margin-top: 20px;
+            border: 2px solid #3949ab;
+            border-radius: 8px;
+            overflow: hidden;
+            background-color: #000;
+        }
+        .fjordr-player iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        .fjordr-controls {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            display: flex;
+            gap: 10px;
+        }
+        .fjordr-controls button {
+            background-color: #3949ab;
+            border: none;
+            color: white;
+            padding: 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .fjordr-controls button:hover {
+            background-color: #5c6bc0;
         }
     </style>
 </head>
@@ -69,8 +98,39 @@
     <p>Enjoy playing our browser-based games directly from this page.</p>
 
     <h3>Geo Tycoon</h3>
-    <iframe src="https://geotycoon.online" class="game-iframe" title="Geo Tycoon"></iframe>
+    <div class="fjordr-player" id="fjordrPlayer">
+        <iframe id="gameIframe" src="https://geotycoon.online" title="Geo Tycoon"></iframe>
+        <div class="fjordr-controls">
+            <button onclick="reloadGame()">Reload</button>
+            <button onclick="enterFullscreen()">Fullscreen</button>
+            <button onclick="goBack()">Back</button>
+        </div>
+    </div>
 </main>
+
+<script>
+    function reloadGame() {
+        const iframe = document.getElementById('gameIframe');
+        iframe.src = iframe.src;
+    }
+
+    function enterFullscreen() {
+        const player = document.getElementById('fjordrPlayer');
+        if (player.requestFullscreen) {
+            player.requestFullscreen();
+        } else if (player.mozRequestFullScreen) { /* Firefox */
+            player.mozRequestFullScreen();
+        } else if (player.webkitRequestFullscreen) { /* Chrome, Safari & Opera */
+            player.webkitRequestFullscreen();
+        } else if (player.msRequestFullscreen) { /* IE/Edge */
+            player.msRequestFullscreen();
+        }
+    }
+
+    function goBack() {
+        window.history.back();
+    }
+</script>
 
 </body>
 </html>
