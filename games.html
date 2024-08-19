@@ -57,14 +57,12 @@
             border-radius: 8px;
             overflow: hidden;
             background-color: #000;
+            display: flex;
+            flex-direction: column;
         }
 
         .fjordr-player iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            flex: 1;
             border: none;
             transform: scale(0.95); /* Scale down slightly to fit better */
             transform-origin: top left;
@@ -85,6 +83,7 @@
             z-index: 10;
             flex-direction: column;
         }
+
         .spinner {
             border: 4px solid rgba(255, 255, 255, 0.3);
             border-radius: 50%;
@@ -94,10 +93,12 @@
             animation: spin 1s linear infinite;
             margin-bottom: 20px;
         }
+
         @keyframes spin {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
+
         .fjordr-controls {
             position: absolute;
             top: 10px;
@@ -105,7 +106,9 @@
             display: flex;
             gap: 10px;
             z-index: 20;
+            flex-wrap: wrap;
         }
+
         .fjordr-controls button {
             background-color: #3949ab;
             border: none;
@@ -115,8 +118,18 @@
             cursor: pointer;
             transition: background-color 0.3s;
         }
+
         .fjordr-controls button:hover {
             background-color: #5c6bc0;
+        }
+
+        .fjordr-ad {
+            width: 100%;
+            height: 90px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #fff; /* Optional: Set a background for the ad area */
         }
     </style>
 </head>
@@ -141,17 +154,6 @@
     <!-- Geo Tycoon Fjörðr Player -->
     <h3>Geo Tycoon</h3>
     <div class="fjordr-player" id="fjordrPlayer1">
-        <!-- Fjörðr Player Ad Banner -->
-        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7136613030546059"
-            crossorigin="anonymous"></script>
-        <ins class="adsbygoogle"
-            style="display:inline-block;width:728px;height:90px"
-            data-ad-client="ca-pub-7136613030546059"
-            data-ad-slot="3924934264"></ins>
-        <script>
-            (adsbygoogle = window.adsbygoogle || []).push({});
-        </script>
-
         <div class="fjordr-loading" id="loadingScreen1">
             <div class="spinner"></div>
             <div>Loading the game...</div>
@@ -160,24 +162,29 @@
         <div class="fjordr-controls">
             <button onclick="reloadGame(1)">Reload</button>
             <button onclick="enterFullscreen(1)">Fullscreen</button>
+            <button onclick="toggleMute(1)">Mute</button>
+            <button onclick="pausePlayGame(1)">Pause</button>
+            <button onclick="takeScreenshot(1)">Screenshot</button>
+            <button onclick="toggleQuality(1)">Toggle Quality</button>
             <button onclick="goBack()">Back</button>
+        </div>
+        <!-- Fjörðr Player Ad Banner -->
+        <div class="fjordr-ad">
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7136613030546059"
+                crossorigin="anonymous"></script>
+            <ins class="adsbygoogle"
+                style="display:inline-block;width:728px;height:90px"
+                data-ad-client="ca-pub-7136613030546059"
+                data-ad-slot="3924934264"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
         </div>
     </div>
 
     <!-- Medieval Civilizations Fjörðr Player -->
     <h3>Medieval Civilizations</h3>
     <div class="fjordr-player" id="fjordrPlayer2">
-        <!-- Fjörðr Player Ad Banner -->
-        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7136613030546059"
-            crossorigin="anonymous"></script>
-        <ins class="adsbygoogle"
-            style="display:inline-block;width:728px;height:90px"
-            data-ad-client="ca-pub-7136613030546059"
-            data-ad-slot="3924934264"></ins>
-        <script>
-            (adsbygoogle = window.adsbygoogle || []).push({});
-        </script>
-
         <div class="fjordr-loading" id="loadingScreen2">
             <div class="spinner"></div>
             <div>Loading the game...</div>
@@ -186,19 +193,33 @@
         <div class="fjordr-controls">
             <button onclick="reloadGame(2)">Reload</button>
             <button onclick="enterFullscreen(2)">Fullscreen</button>
+            <button onclick="toggleMute(2)">Mute</button>
+            <button onclick="pausePlayGame(2)">Pause</button>
+            <button onclick="takeScreenshot(2)">Screenshot</button>
+            <button onclick="toggleQuality(2)">Toggle Quality</button>
             <button onclick="goBack()">Back</button>
+        </div>
+        <!-- Fjörðr Player Ad Banner -->
+        <div class="fjordr-ad">
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7136613030546059"
+                crossorigin="anonymous"></script>
+            <ins class="adsbygoogle"
+                style="display:inline-block;width:728px;height:90px"
+                data-ad-client="ca-pub-7136613030546059"
+                data-ad-slot="3924934264"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
         </div>
     </div>
 </main>
 
 <script>
-    // Function to handle game loading
     function handleGameLoad(playerId) {
         document.getElementById('loadingScreen' + playerId).style.display = 'none';
         document.getElementById('gameIframe' + playerId).style.display = 'block';
     }
 
-    // Add onload events for both iframes
     document.getElementById('gameIframe1').onload = function() {
         handleGameLoad(1);
     };
@@ -206,7 +227,6 @@
         handleGameLoad(2);
     };
 
-    // Function to reload the game
     function reloadGame(playerId) {
         const iframe = document.getElementById('gameIframe' + playerId);
         iframe.style.display = 'none';
@@ -214,21 +234,51 @@
         iframe.src = iframe.src;
     }
 
-    // Function to enter fullscreen mode
     function enterFullscreen(playerId) {
         const player = document.getElementById('fjordrPlayer' + playerId);
         if (player.requestFullscreen) {
             player.requestFullscreen();
-        } else if (player.mozRequestFullScreen) { /* Firefox */
+        } else if (player.mozRequestFullScreen) { 
             player.mozRequestFullScreen();
-        } else if (player.webkitRequestFullscreen) { /* Chrome, Safari & Opera */
+        } else if (player.webkitRequestFullscreen) { 
             player.webkitRequestFullscreen();
-        } else if (player.msRequestFullscreen) { /* IE/Edge */
+        } else if (player.msRequestFullscreen) { 
             player.msRequestFullscreen();
         }
     }
 
-    // Function to go back to the previous page
+    function toggleMute(playerId) {
+        const iframe = document.getElementById('gameIframe' + playerId);
+        const isMuted = iframe.contentWindow.document.body.muted || false;
+        iframe.contentWindow.document.body.muted = !isMuted;
+        alert(isMuted ? 'Unmuted' : 'Muted');
+    }
+
+    function pausePlayGame(playerId) {
+        const iframe = document.getElementById('gameIframe' + playerId);
+        const isPaused = iframe.contentWindow.document.body.paused || false;
+        if (isPaused) {
+            iframe.contentWindow.document.body.play();
+        } else {
+            iframe.contentWindow.document.body.pause();
+        }
+        alert(isPaused ? 'Playing' : 'Paused');
+    }
+
+    function takeScreenshot(playerId) {
+        const iframe = document.getElementById('gameIframe' + playerId);
+        iframe.contentWindow.html2canvas(iframe.contentWindow.document.body).then(canvas => {
+            const link = document.createElement('a');
+            link.download = 'screenshot.png';
+            link.href = canvas.toDataURL();
+            link.click();
+        });
+    }
+
+    function toggleQuality(playerId) {
+        alert('Quality toggle feature is not implemented yet.');
+    }
+
     function goBack() {
         window.history.back();
     }
