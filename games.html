@@ -131,9 +131,23 @@
     <div class="fjordr-player" id="fjordrPlayer">
         <div class="fjordr-loading" id="loadingScreen">
             <div class="spinner"></div>
-            <div>Loading the game...</div>
+            <div>Loading Geo Tycoon...</div>
         </div>
         <iframe id="gameIframe" src="https://geotycoon.online" title="Geo Tycoon"></iframe>
+        <div class="fjordr-controls">
+            <button onclick="reloadGame()">Reload</button>
+            <button onclick="enterFullscreen()">Fullscreen</button>
+            <button onclick="goBack()">Back</button>
+        </div>
+    </div>
+</main>
+     <h3>Medieval Civilizations</h3>
+    <div class="fjordr-player" id="fjordrPlayer">
+        <div class="fjordr-loading" id="loadingScreen">
+            <div class="spinner"></div>
+            <div>Loading MedievalCivilizations...</div>
+        </div>
+        <iframe id="gameIframe" src="https://medievalciviliztions.online" title="Medieval Civilizations"></iframe>
         <div class="fjordr-controls">
             <button onclick="reloadGame()">Reload</button>
             <button onclick="enterFullscreen()">Fullscreen</button>
